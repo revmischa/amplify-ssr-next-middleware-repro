@@ -40,5 +40,5 @@ export const middleware: NextMiddleware = async (req, evt) => {
 };
 
 export const config = {
-  matcher: ["/loggedin/:path*"],
+  matcher: ["/loggedin/:path*", "/admin/:path*"],
 };
