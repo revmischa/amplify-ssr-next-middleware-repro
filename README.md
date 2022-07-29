@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Reproduction repo for https://github.com/aws-amplify/amplify-js/issues/9145
 
-## Getting Started
+## Instructions
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+```
+pnpm install
+pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The only addition to create-next-app is the file `middleware.ts`.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Error
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```
+info  - SWC minify release candidate enabled. https://nextjs.link/swcmin
+info  - Linting and checking validity of types
+info  - Creating an optimized production build
+Failed to compile.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+./node_modules/.pnpm/@aws-amplify+core@4.6.0/node_modules/@aws-amplify/core/lib-esm/JS.js
+Dynamic Code Evaluation (e. g. 'eval', 'new Function', 'WebAssembly.compile') not allowed in Edge Runtime
 
-## Learn More
+Import trace for requested module:
+./node_modules/.pnpm/@aws-amplify+core@4.6.0/node_modules/@aws-amplify/core/lib-esm/index.js
+./node_modules/.pnpm/aws-amplify@4.3.29/node_modules/aws-amplify/lib-esm/withSSRContext.js
+./middleware.ts
 
-To learn more about Next.js, take a look at the following resources:
+./node_modules/.pnpm/amazon-cognito-identity-js@5.2.10/node_modules/amazon-cognito-identity-js/es/Client.js
+Dynamic Code Evaluation (e. g. 'eval', 'new Function', 'WebAssembly.compile') not allowed in Edge Runtime
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Import trace for requested module:
+./node_modules/.pnpm/amazon-cognito-identity-js@5.2.10/node_modules/amazon-cognito-identity-js/es/CognitoUserPool.js
+./node_modules/.pnpm/amazon-cognito-identity-js@5.2.10/node_modules/amazon-cognito-identity-js/es/index.js
+./node_modules/.pnpm/@aws-amplify+auth@4.6.0/node_modules/@aws-amplify/auth/lib-esm/index.js
+./node_modules/.pnpm/aws-amplify@4.3.29/node_modules/aws-amplify/lib-esm/withSSRContext.js
+./middleware.ts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+./node_modules/.pnpm/immer@9.0.6/node_modules/immer/dist/immer.esm.js
+Dynamic Code Evaluation (e. g. 'eval', 'new Function', 'WebAssembly.compile') not allowed in Edge Runtime
 
-## Deploy on Vercel
+Import trace for requested module:
+./node_modules/.pnpm/@aws-amplify+datastore@3.12.4/node_modules/@aws-amplify/datastore/lib-esm/util.js
+./node_modules/.pnpm/@aws-amplify+datastore@3.12.4/node_modules/@aws-amplify/datastore/lib-esm/index.js
+./node_modules/.pnpm/aws-amplify@4.3.29/node_modules/aws-amplify/lib-esm/withSSRContext.js
+./middleware.ts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+./node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/_root.js
+Dynamic Code Evaluation (e. g. 'eval', 'new Function', 'WebAssembly.compile') not allowed in Edge Runtime
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Import trace for requested module:
+./node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/isBuffer.js
+./node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/isEmpty.js
+./node_modules/.pnpm/@aws-amplify+analytics@5.2.14/node_modules/@aws-amplify/analytics/lib-esm/Providers/AmazonPersonalizeProvider.js
+./node_modules/.pnpm/@aws-amplify+analytics@5.2.14/node_modules/@aws-amplify/analytics/lib-esm/Providers/index.js
+./node_modules/.pnpm/@aws-amplify+analytics@5.2.14/node_modules/@aws-amplify/analytics/lib-esm/index.js
+./node_modules/.pnpm/aws-amplify@4.3.29/node_modules/aws-amplify/lib-esm/index.js
+./node_modules/.pnpm/aws-amplify@4.3.29/node_modules/aws-amplify/lib-esm/withSSRContext.js
+./middleware.ts
+
+./node_modules/.pnpm/graphql@15.8.0/node_modules/graphql/error/GraphQLError.mjs
+Dynamic Code Evaluation (e. g. 'eval', 'new Function', 'WebAssembly.compile') not allowed in Edge Runtime
+
+Import trace for requested module:
+./node_modules/.pnpm/graphql@15.8.0/node_modules/graphql/error/index.mjs
+./node_modules/.pnpm/graphql@15.8.0/node_modules/graphql/index.mjs
+./node_modules/.pnpm/@aws-amplify+api-graphql@2.3.11/node_modules/@aws-amplify/api-graphql/lib-esm/GraphQLAPI.js
+./node_modules/.pnpm/@aws-amplify+api-graphql@2.3.11/node_modules/@aws-amplify/api-graphql/lib-esm/index.js
+./node_modules/.pnpm/@aws-amplify+api@4.0.47/node_modules/@aws-amplify/api/lib-esm/index.js
+./node_modules/.pnpm/aws-amplify@4.3.29/node_modules/aws-amplify/lib-esm/withSSRContext.js
+./middleware.ts
+```
